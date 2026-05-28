@@ -1,11 +1,13 @@
 import { useState } from "react";
+import avatar from "./assets/avatar.png";
+import { C, card, divider } from "./styles";
 
 const skillGroups = [
-  { label: "Core", color: "#3C3489", bg: "#EEEDFE", skills: ["React", "React Native", "TypeScript", "JavaScript", "HTML5", "CSS3"] },
-  { label: "State & Forms", color: "#0F6E56", bg: "#E1F5EE", skills: ["Redux", "Redux Toolkit", "react-final-form", "Zod", "Async Validation"] },
-  { label: "API & Integration", color: "#185FA5", bg: "#E6F1FB", skills: ["REST API", "gRPC", "API Integration", "Data Fetching"] },
-  { label: "Testing", color: "#854F0B", bg: "#FAEEDA", skills: ["Jest", "Unit Testing", "Integration Testing", "Component Testing", "Screenshot Testing"] },
-  { label: "Architecture & Tooling", color: "#993C1D", bg: "#FAECE7", skills: ["Frontend Architecture", "Next.js", "Webpack", "CI/CD", "Performance Optimization", "Accessibility (a11y)"] },
+  { label: "Core",                   ...C.slate, skills: ["React", "React Native", "TypeScript", "JavaScript", "HTML5", "CSS3"] },
+  { label: "State & Forms",          ...C.green, skills: ["Redux", "Redux Toolkit", "react-final-form", "Zod", "Async Validation"] },
+  { label: "API & Integration",      ...C.blue,  skills: ["REST API", "gRPC", "API Integration", "Data Fetching"] },
+  { label: "Testing",                ...C.amber, skills: ["Jest", "Unit Testing", "Integration Testing", "Component Testing", "Screenshot Testing"] },
+  { label: "Architecture & Tooling", ...C.rose,  skills: ["Frontend Architecture", "Next.js", "Webpack", "CI/CD", "Performance Optimization", "Accessibility (a11y)"] },
 ];
 
 const projects = [
@@ -14,11 +16,11 @@ const projects = [
     icon: "🔍",
     title: "Returns Risk & Cost Control",
     subtitle: "Automated return verification system for marketplace logistics flows",
-    color: "#185FA5", bg: "#E6F1FB",
+    ...C.blue,
     metrics: [
-      { label: "Invalid payouts prevented", value: "~€5M", unit: "", icon: "🚫" },
-      { label: "Merchant claims", value: "−14%", unit: "", icon: "📉" },
-      { label: "Total payouts", value: "−12%", unit: "", icon: "💸" },
+      { label: "Invalid payouts prevented", value: "~€5M" },
+      { label: "Merchant claims reduced",   value: "−14%" },
+      { label: "Total payouts reduced",     value: "−12%" },
     ],
     bullets: [
       "Worked on an automated return verification system for marketplace logistics flows",
@@ -32,10 +34,10 @@ const projects = [
     icon: "🚚",
     title: "Courier Delivery Configuration",
     subtitle: "Multi-step logistics configuration flow for marketplace sellers",
-    color: "#993C1D", bg: "#FAECE7",
+    ...C.rose,
     metrics: [
-      { label: "Configuration steps", value: "3+", unit: "", icon: "📋" },
-      { label: "Scope", value: "Business-critical", unit: "", icon: "⚙️" },
+      { label: "Configuration steps", value: "3+"              },
+      { label: "Scope",               value: "Business-critical" },
     ],
     bullets: [
       "Developed a multi-step logistics configuration flow for marketplace sellers",
@@ -50,10 +52,10 @@ const projects = [
     icon: "📦",
     title: "Marketplace Exchange",
     subtitle: "New seller program with guaranteed income that increased warehouse adoption",
-    color: "#3C3489", bg: "#EEEDFE",
+    ...C.slate,
     metrics: [
-      { label: "GMV generated", value: "~€4M+", unit: "", icon: "📈" },
-      { label: "New sellers onboarded", value: "~150", unit: "", icon: "🤝" },
+      { label: "GMV generated",        value: "~€4M+" },
+      { label: "New sellers onboarded", value: "~150" },
     ],
     bullets: [
       "Launched a new seller program with guaranteed income that increased warehouse adoption",
@@ -68,10 +70,10 @@ const projects = [
     icon: "🧾",
     title: "Order Item Identifier Validation",
     subtitle: "Scalable validation system for business-critical order identifiers",
-    color: "#854F0B", bg: "#FAEEDA",
+    ...C.amber,
     metrics: [
-      { label: "Identifier types", value: "4", unit: "", icon: "🔢" },
-      { label: "Validation states", value: "3", unit: "", icon: "🔄" },
+      { label: "Identifier types",   value: "4" },
+      { label: "Validation states",  value: "3" },
     ],
     bullets: [
       "Developed a scalable validation system for business-critical order identifiers",
@@ -89,48 +91,30 @@ const timeline = [
     period: "Mar 2022 — Mar 2026",
     role: "Frontend Engineer",
     company: "Yandex",
-    icon: "💼",
-    color: "#7F77DD", bg: "#EEEDFE",
+    ...C.slate,
     highlights: [
-      "Owned and delivered frontend features end-to-end: from requirements gathering and API integration to implementation, testing, rollout, and support",
-      "Built scalable data-heavy interfaces for operational workflows involving filtering, moderation, and large dataset management",
-      "Developed reusable multi-step form systems with async backend validation and complex business logic",
-      "Collaborated with cross-functional teams including backend, product, design, and QA to define requirements and improve workflow reliability",
-      "Implemented unit, integration, component, and screenshot tests using Jest",
-      "Designed and developed return moderation flows — €5M/year operational savings, 14.2% reduction in merchant claims, 12% reduction in compensation payouts",
-      "Architected and developed logistics configuration interfaces with real-time validation and complex business rules",
-      "Contributed to scalable frontend architecture and maintainable UI systems for complex business workflows",
-    ],
-  },
-  {
-    period: "Nov 2019 — Feb 2022",
-    role: "QA Engineer",
-    company: "High Technologies Center",
-    icon: "🧪",
-    color: "#0F6E56", bg: "#E1F5EE",
-    highlights: [
-      "End-to-end testing of web and mobile apps (frontend, backend, iOS, Android)",
-      "Cross-functional delivery of a new banking service",
-      "Mentored an intern from onboarding to full-time role",
-      "Improved team testing processes and quality standards",
+      "End-to-end feature ownership — from spec and API integration to rollout and support",
+      "Built data-heavy operational interfaces for moderation, filtering, and large-scale workflows",
+      "Developed multi-step forms with async backend validation and complex business rules",
+      "Return moderation system — €5M/year in prevented payouts, −14% merchant claims, −12% total payouts",
+      "Unit, integration, component, and screenshot testing with Jest",
+      "On-call rotation — incident response, release monitoring, and production support",
     ],
   },
 ];
 
 const overviewMetrics = [
-  { label: "Years of Experience", value: "4+", icon: "📅" },
-  { label: "Annual Cost Savings", value: "€5M", icon: "💰" },
-  { label: "Claims Reduced", value: "14.2%", icon: "📉" },
-  { label: "Payouts Reduced", value: "12%", icon: "✅" },
+  { label: "Years of Experience", value: "4+" },
+  { label: "Annual Cost Savings", value: "€5M" },
+  { label: "Claims Reduced",      value: "14.2%" },
+  { label: "Payouts Reduced",     value: "12%" },
 ];
 
 const styleday = {
-  id: "styleday",
   icon: "👗",
   title: "Styleday",
   subtitle: "AI-powered outfit analysis and style recommendation app",
-  color: "#533000", bg: "#FFF3E0",
-  tags: ["React Native", "Expo", "TypeScript", "Node.js", "OpenAI", "Gemini", "In-App Purchases"],
+  ...C.amber,
   bullets: [
     "Personal product built from scratch using React Native and TypeScript",
     "Full product flow: photo upload → AI analysis → personalized style suggestions and styled images",
@@ -148,177 +132,190 @@ export default function Portfolio() {
   const [expandedProject, setExpandedProject] = useState(null);
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", maxWidth: 760, margin: "0 auto", padding: "1.5rem 1rem", color: "var(--color-text-primary)" }}>
+      <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", width: "100%", maxWidth: 720, margin: "0 auto", padding: "1.5rem 1rem 1.5rem", color: C.dark }}>
 
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: "2rem", padding: "1.25rem 1.5rem", background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: 16 }}>
-        <div style={{ width: 60, height: 60, borderRadius: "50%", background: "#EEEDFE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 500, color: "#3C3489", flexShrink: 0 }}>MK</div>
-        <div style={{ flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 500 }}>Maria Kutiavina</h1>
-          <p style={{ margin: "2px 0 6px", fontSize: 14, color: "var(--color-text-secondary)" }}>Frontend Engineer · React · TypeScript · 4+ YOE</p>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <a href="mailto:makutiavina@gmail.com" style={{ fontSize: 12, color: "#185FA5", textDecoration: "none", background: "#E6F1FB", padding: "3px 10px", borderRadius: 20 }}>✉ makutiavina@gmail.com</a>
-            <a href="https://linkedin.com/in/maria-kutiavina/" target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "#3C3489", textDecoration: "none", background: "#EEEDFE", padding: "3px 10px", borderRadius: 20 }}>in LinkedIn</a>
-            <span style={{ fontSize: 12, color: "#0F6E56", background: "#E1F5EE", padding: "3px 10px", borderRadius: 20 }}>🌍 Remote / Relocation / Hybrid</span>
+        {/* ── Header ── */}
+        <div style={{ ...card, padding: "1.5rem 2rem", marginBottom: "0.75rem", textAlign: "center", background: C.dark, border: "none" }}>
+          <img src={avatar} alt="Maria Kutiavina" style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "1.5px solid #334155", margin: "0 auto 18px", display: "block" }} />
+          <h1 style={{ margin: "0 0 6px", fontSize: 26, fontWeight: 600, letterSpacing: -0.5, color: "#F8FAFC" }}>Maria Kutiavina</h1>
+          <p style={{ margin: "0 0 20px", fontSize: 14, color: "#94A3B8" }}>Frontend Engineer · React · TypeScript · 4+ YOE</p>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+            <a href="mailto:makutiavina@gmail.com" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>✉ makutiavina@gmail.com</a>
+            <a href="https://linkedin.com/in/maria-kutiavina/" target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>LinkedIn</a>
+            <span style={{ fontSize: 12, color: "#94A3B8", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>Remote / Relocation / Hybrid</span>
           </div>
         </div>
-      </div>
 
-      {/* Tabs */}
-      <div style={{ display: "flex", gap: 4, marginBottom: "1.5rem", background: "var(--color-background-secondary)", padding: 4, borderRadius: 12 }}>
-        {tabs.map(t => (
-          <button key={t} onClick={() => setActiveTab(t)} style={{ flex: 1, padding: "8px 0", border: "none", borderRadius: 9, background: activeTab === t ? "var(--color-background-primary)" : "transparent", color: activeTab === t ? "var(--color-text-primary)" : "var(--color-text-secondary)", fontWeight: activeTab === t ? 500 : 400, fontSize: 14, cursor: "pointer" }}>{t}</button>
-        ))}
-      </div>
+        {/* ── Tabs ── */}
+        <div style={{ display: "flex", borderBottom: `1px solid ${C.border}`, marginBottom: "1rem", gap: 0 }}>
+          {tabs.map(t => (
+            <button
+              key={t}
+              onClick={() => setActiveTab(t)}
+              style={{
+                flex: 1,
+                padding: "10px 4px",
+                border: "none",
+                borderBottom: activeTab === t ? `2px solid ${C.dark}` : "2px solid transparent",
+                background: "transparent",
+                color: activeTab === t ? C.dark : C.faint,
+                fontWeight: 500,
+                fontSize: 13,
+                cursor: "pointer",
+                marginBottom: -1,
+                transition: "color 0.15s",
+              }}
+            >{t}</button>
+          ))}
+        </div>
 
-      {/* OVERVIEW */}
-      {activeTab === "Overview" && (
-        <div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 10, marginBottom: "1.5rem" }}>
-            {overviewMetrics.map(m => (
-              <div key={m.label} style={{ background: "var(--color-background-secondary)", borderRadius: 12, padding: "1rem", textAlign: "center" }}>
-                <div style={{ fontSize: 22 }}>{m.icon}</div>
-                <div style={{ fontSize: 24, fontWeight: 500, margin: "4px 0 2px" }}>{m.value}</div>
-                <div style={{ fontSize: 12, color: "var(--color-text-secondary)" }}>{m.label}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: 14, padding: "1.25rem 1.5rem", marginBottom: "1rem" }}>
-            <h2 style={{ margin: "0 0 10px", fontSize: 16, fontWeight: 500 }}>Career profile</h2>
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.7, color: "var(--color-text-secondary)" }}>Frontend engineer with 4+ years building scalable B2B platforms using React and TypeScript. Specialized in complex operational workflows, data-heavy interfaces, async validation systems, and end-to-end feature ownership. Built frontend systems for logistics, returns, delivery settings, and moderation workflows used by tens of thousands of merchants.</p>
-          </div>
-          <div style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: 14, padding: "1.25rem 1.5rem" }}>
-            <h2 style={{ margin: "0 0 12px", fontSize: 16, fontWeight: 500 }}>Education</h2>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 40, height: 40, borderRadius: 10, background: "#FAEEDA", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🎓</div>
-              <div>
-                <p style={{ margin: 0, fontSize: 14, fontWeight: 500 }}>B.Sc. in Computer Science</p>
-                <p style={{ margin: 0, fontSize: 13, color: "var(--color-text-secondary)" }}>Udmurt State University</p>
+        {/* ── OVERVIEW ── */}
+        {activeTab === "Overview" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ ...card, display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+              {overviewMetrics.map((m, i) => (
+                <div key={m.label} style={{ padding: "1rem 0.75rem", textAlign: "center", borderRight: i < overviewMetrics.length - 1 ? `1px solid ${C.border}` : "none" }}>
+                  <div style={{ fontSize: 26, fontWeight: 700, color: C.dark, letterSpacing: -0.5, marginBottom: 4 }}>{m.value}</div>
+                  <div style={{ fontSize: 11, color: C.faint, lineHeight: 1.4 }}>{m.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ ...card, padding: "1rem" }}>
+              <h2 style={{ margin: "0 0 10px", fontSize: 15, fontWeight: 600, color: C.dark }}>Career profile</h2>
+              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.75, color: C.muted }}>Frontend engineer with 4+ years building scalable B2B platforms using React and TypeScript. Specialized in complex operational workflows, data-heavy interfaces, async validation systems, and end-to-end feature ownership. Built frontend systems for logistics, returns, delivery settings, and moderation workflows used by tens of thousands of merchants.</p>
+            </div>
+
+            <div style={{ ...card, padding: "1rem" }}>
+              <h2 style={{ margin: "0 0 10px", fontSize: 15, fontWeight: 600, color: C.dark }}>Education</h2>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ width: 42, height: 42, borderRadius: 10, background: C.bg, border: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🎓</div>
+                <div>
+                  <p style={{ margin: 0, fontSize: 14, fontWeight: 500, color: C.dark }}>B.Sc. in Computer Science</p>
+                  <p style={{ margin: "2px 0 0", fontSize: 13, color: C.muted }}>Udmurt State University</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* WORK PROJECTS */}
-      {activeTab === "Work Projects" && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <p style={{ margin: "0 0 4px", fontSize: 13, color: "var(--color-text-secondary)", fontStyle: "italic" }}>A selection of the most memorable projects from 4 years at Yandex — not an exhaustive list.</p>
-          {projects.map(p => {
-            const isOpen = expandedProject === p.id;
-            return (
-              <div key={p.id} style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: 14, overflow: "hidden" }}>
-                <button onClick={() => setExpandedProject(isOpen ? null : p.id)} style={{ width: "100%", background: "none", border: "none", cursor: "pointer", padding: "1rem 1.25rem", display: "flex", alignItems: "center", gap: 14, textAlign: "left" }}>
-                  <div style={{ width: 46, height: 46, borderRadius: 12, background: p.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0 }}>{p.icon}</div>
-                  <div style={{ flex: 1 }}>
-                    <p style={{ margin: 0, fontWeight: 500, fontSize: 15, color: "var(--color-text-primary)" }}>{p.title}</p>
-                    <p style={{ margin: "2px 0 0", fontSize: 13, color: "var(--color-text-secondary)" }}>{p.subtitle}</p>
-                  </div>
-                  <span style={{ fontSize: 18, color: "var(--color-text-secondary)", display: "inline-block", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform .2s" }}>⌄</span>
-                </button>
-                {p.metrics.length > 0 && (
-                  <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(p.metrics.length, 4)}, 1fr)`, borderTop: "0.5px solid var(--color-border-tertiary)" }}>
+        {/* ── WORK PROJECTS ── */}
+        {activeTab === "Work Projects" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <p style={{ margin: "0 0 4px", fontSize: 13, color: C.faint, fontStyle: "italic" }}>A selection of the most impactful projects from 4 years at Yandex.</p>
+            {projects.map(p => {
+              const isOpen = expandedProject === p.id;
+              return (
+                <div key={p.id} style={{ ...card, overflow: "hidden" }}>
+                  <button onClick={() => setExpandedProject(isOpen ? null : p.id)} style={{ width: "100%", background: "none", border: "none", cursor: "pointer", padding: "1rem 1.25rem", display: "flex", alignItems: "center", gap: 14, textAlign: "left" }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 11, background: p.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{p.icon}</div>
+                    <div style={{ flex: 1 }}>
+                      <p style={{ margin: 0, fontWeight: 600, fontSize: 14, color: C.dark }}>{p.title}</p>
+                      <p style={{ margin: "2px 0 0", fontSize: 12, color: C.muted }}>{p.subtitle}</p>
+                    </div>
+                    <span style={{ fontSize: 14, color: C.faint, display: "inline-block", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform .2s" }}>▾</span>
+                  </button>
+
+                  <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(p.metrics.length, 4)}, 1fr)`, ...divider }}>
                     {p.metrics.map((m, i) => (
-                      <div key={i} style={{ padding: "10px 12px", borderRight: i < p.metrics.length - 1 ? "0.5px solid var(--color-border-tertiary)" : "none", textAlign: "center" }}>
-                        <div style={{ fontSize: 16, fontWeight: 500, color: p.color }}>{m.value}{m.unit}</div>
-                        <div style={{ fontSize: 11, color: "var(--color-text-secondary)", marginTop: 2 }}>{m.label}</div>
+                      <div key={i} style={{ padding: "10px 12px", borderRight: i < p.metrics.length - 1 ? `1px solid ${C.border}` : "none", textAlign: "center" }}>
+                        <div style={{ fontSize: 15, fontWeight: 700, color: p.text }}>{m.value}</div>
+                        <div style={{ fontSize: 11, color: C.faint, marginTop: 2 }}>{m.label}</div>
                       </div>
                     ))}
                   </div>
-                )}
-                {isOpen && (
-                  <div style={{ padding: "1rem 1.25rem", borderTop: "0.5px solid var(--color-border-tertiary)" }}>
-                    <ul style={{ margin: "0 0 1rem", paddingLeft: 18, display: "flex", flexDirection: "column", gap: 6 }}>
-                      {p.bullets.map((b, i) => (
-                        <li key={i} style={{ fontSize: 13, color: "var(--color-text-secondary)", lineHeight: 1.65 }}>{b}</li>
-                      ))}
-                    </ul>
-                    {p.link && (
-                      <a href={p.link} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "#185FA5", background: "#E6F1FB", padding: "4px 12px", borderRadius: 20, textDecoration: "none" }}>↗ Visit app</a>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
 
-      {/* PERSONAL */}
-      {activeTab === "Personal" && (
-        <div>
-          <p style={{ margin: "0 0 16px", fontSize: 13, color: "var(--color-text-secondary)", fontStyle: "italic" }}>Built independently, outside of work.</p>
-          <div style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: 14, overflow: "hidden" }}>
-            <div style={{ padding: "1.25rem 1.5rem", borderBottom: "0.5px solid var(--color-border-tertiary)", display: "flex", alignItems: "center", gap: 14 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 14, background: styleday.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, flexShrink: 0 }}>{styleday.icon}</div>
-              <div style={{ flex: 1 }}>
-                <p style={{ margin: 0, fontWeight: 500, fontSize: 16 }}>{styleday.title}</p>
-                <p style={{ margin: "3px 0 0", fontSize: 13, color: "var(--color-text-secondary)" }}>{styleday.subtitle}</p>
-              </div>
-              <a href={styleday.link} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "#185FA5", background: "#E6F1FB", padding: "5px 14px", borderRadius: 20, textDecoration: "none", flexShrink: 0 }}>↗ Visit app</a>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: "0.5px solid var(--color-border-tertiary)" }}>
-              <div style={{ padding: "10px 16px", borderRight: "0.5px solid var(--color-border-tertiary)", textAlign: "center" }}>
-                <div style={{ fontSize: 15, fontWeight: 500, color: styleday.color }}>iOS</div>
-                <div style={{ fontSize: 11, color: "var(--color-text-secondary)", marginTop: 2 }}>Platform</div>
-              </div>
-              <div style={{ padding: "10px 16px", textAlign: "center" }}>
-                <div style={{ fontSize: 15, fontWeight: 500, color: styleday.color }}>0 → 1</div>
-                <div style={{ fontSize: 11, color: "var(--color-text-secondary)", marginTop: 2 }}>Built from scratch</div>
-              </div>
-            </div>
-            <div style={{ padding: "1.25rem 1.5rem" }}>
-              <ul style={{ margin: "0 0 1rem", paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
-                {styleday.bullets.map((b, i) => (
-                  <li key={i} style={{ fontSize: 13, color: "var(--color-text-secondary)", lineHeight: 1.65 }}>{b}</li>
-                ))}
-              </ul>
-
-            </div>
+                  {isOpen && (
+                    <div style={{ padding: "1rem 1.25rem", ...divider, textAlign: "left" }}>
+                      <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 6 }}>
+                        {p.bullets.map((b, i) => (
+                          <li key={i} style={{ fontSize: 13, color: C.muted, lineHeight: 1.65 }}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        </div>
-      )}
+        )}
 
-      {/* EXPERIENCE */}
-      {activeTab === "Experience" && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {timeline.map((job, i) => (
-            <div key={i} style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: 14, overflow: "hidden" }}>
-              <div style={{ padding: "1rem 1.25rem", borderBottom: "0.5px solid var(--color-border-tertiary)", display: "flex", alignItems: "center", gap: 14 }}>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: job.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{job.icon}</div>
+        {/* ── PERSONAL ── */}
+        {activeTab === "Personal" && (
+          <div>
+            <p style={{ margin: "0 0 12px", fontSize: 13, color: C.faint, fontStyle: "italic" }}>Built independently, outside of work.</p>
+            <div style={{ ...card, overflow: "hidden" }}>
+              <div style={{ padding: "1.25rem 1.5rem", ...divider, display: "flex", alignItems: "center", gap: 14 }}>
+                <div style={{ width: 50, height: 50, borderRadius: 13, background: styleday.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>{styleday.icon}</div>
                 <div style={{ flex: 1 }}>
-                  <p style={{ margin: 0, fontWeight: 500, fontSize: 15 }}>{job.role}</p>
-                  <p style={{ margin: "2px 0 0", fontSize: 13, color: "var(--color-text-secondary)" }}>{job.company} · {job.period}</p>
+                  <p style={{ margin: 0, fontWeight: 600, fontSize: 16, color: C.dark }}>{styleday.title}</p>
+                  <p style={{ margin: "3px 0 0", fontSize: 13, color: C.muted }}>{styleday.subtitle}</p>
+                </div>
+                <a href={styleday.link} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: C.dark, background: C.bg, padding: "6px 14px", borderRadius: 20, textDecoration: "none", border: `1px solid ${C.border}`, flexShrink: 0, fontWeight: 500 }}>↗ Visit</a>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: `1px solid ${C.border}` }}>
+                <div style={{ padding: "10px 16px", borderRight: `1px solid ${C.border}`, textAlign: "center" }}>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: styleday.text }}>iOS</div>
+                  <div style={{ fontSize: 11, color: C.faint, marginTop: 2 }}>Platform</div>
+                </div>
+                <div style={{ padding: "10px 16px", textAlign: "center" }}>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: styleday.text }}>0 → 1</div>
+                  <div style={{ fontSize: 11, color: C.faint, marginTop: 2 }}>Built from scratch</div>
                 </div>
               </div>
-              <div style={{ padding: "1rem 1.25rem" }}>
-                <ul style={{ margin: "0 0 1rem", paddingLeft: 18, display: "flex", flexDirection: "column", gap: 5 }}>
-                  {job.highlights.map((h, j) => (
-                    <li key={j} style={{ fontSize: 13, color: "var(--color-text-secondary)", lineHeight: 1.6 }}>{h}</li>
+              <div style={{ padding: "1.25rem 1.5rem", textAlign: "left" }}>
+                <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
+                  {styleday.bullets.map((b, i) => (
+                    <li key={i} style={{ fontSize: 13, color: C.muted, lineHeight: 1.65 }}>{b}</li>
                   ))}
                 </ul>
-
               </div>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        )}
 
-      {/* SKILLS */}
-      {activeTab === "Skills" && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {skillGroups.map(g => (
-            <div key={g.label} style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: 14, padding: "1rem 1.25rem" }}>
-              <p style={{ margin: "0 0 10px", fontSize: 13, fontWeight: 500, color: g.color }}>{g.label}</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-                {g.skills.map(s => (
-                  <span key={s} style={{ fontSize: 12, padding: "4px 12px", borderRadius: 20, background: g.bg, color: g.color }}>{s}</span>
-                ))}
+        {/* ── EXPERIENCE ── */}
+        {activeTab === "Experience" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {timeline.map((job, i) => (
+              <div key={i} style={{ ...card, overflow: "hidden" }}>
+                <div style={{ padding: "1rem 1.25rem", ...divider, display: "flex", alignItems: "center", gap: 14 }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 11, background: job.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
+                    {i === 0 ? "💼" : "🧪"}
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <p style={{ margin: 0, fontWeight: 600, fontSize: 15, color: C.dark }}>{job.role}</p>
+                    <p style={{ margin: "2px 0 0", fontSize: 13, color: C.muted }}>{job.company} · {job.period}</p>
+                  </div>
+                </div>
+                <div style={{ padding: "1rem 1.25rem", textAlign: "left" }}>
+                  <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 6 }}>
+                    {job.highlights.map((h, j) => (
+                      <li key={j} style={{ fontSize: 13, color: C.muted, lineHeight: 1.65 }}>{h}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+            ))}
+          </div>
+        )}
+
+        {/* ── SKILLS ── */}
+        {activeTab === "Skills" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {skillGroups.map(g => (
+              <div key={g.label} style={{ ...card, padding: "1rem 1.25rem" }}>
+                <p style={{ margin: "0 0 10px", fontSize: 12, fontWeight: 600, color: g.text, textTransform: "uppercase", letterSpacing: 0.5 }}>{g.label}</p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {g.skills.map(s => (
+                    <span key={s} style={{ fontSize: 12, padding: "4px 11px", borderRadius: 20, background: g.bg, color: g.text }}>{s}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+      </div>
   );
 }

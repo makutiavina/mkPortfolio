@@ -50,8 +50,24 @@
   }
 }
 
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+  background: #F8FAFC;
+}
+
+button {
+  font-family: inherit;
 }
 
 #root {
