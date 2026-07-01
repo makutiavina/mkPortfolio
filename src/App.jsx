@@ -3,11 +3,11 @@ import avatar from "./assets/avatar.png";
 import { C, card, divider } from "./styles";
 
 const skillGroups = [
-  { label: "Core",                   ...C.slate, skills: ["React", "React Native", "TypeScript", "JavaScript", "HTML5", "CSS3"] },
+  { label: "Core",                   ...C.slate, skills: ["React", "Next.js", "React Native", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Responsive Design"] },
   { label: "State & Forms",          ...C.green, skills: ["Redux", "Redux Toolkit", "react-final-form", "Zod", "Async Validation"] },
   { label: "API & Integration",      ...C.blue,  skills: ["REST API", "gRPC", "API Integration", "Data Fetching"] },
-  { label: "Testing",                ...C.amber, skills: ["Jest", "Unit Testing", "Integration Testing", "Component Testing", "Screenshot Testing"] },
-  { label: "Architecture & Tooling", ...C.rose,  skills: ["Frontend Architecture", "Next.js", "Webpack", "CI/CD", "Performance Optimization", "Accessibility (a11y)"] },
+  { label: "Testing",                ...C.amber, skills: ["Jest", "React Testing Library", "Unit Testing", "Integration Testing", "Component Testing", "E2E Testing", "Screenshot Testing"] },
+  { label: "Architecture & Tooling", ...C.rose,  skills: ["Frontend Architecture", "Component Systems", "Design Systems", "Webpack", "CI/CD", "Performance Optimization", "Accessibility (WCAG)", "Cross-browser Compatibility", "AI-assisted Development"] },
 ];
 
 const projects = [
@@ -88,9 +88,10 @@ const projects = [
 
 const timeline = [
   {
-    period: "Mar 2022 — Mar 2026",
+    period: "Dec 2021 — Mar 2026",
     role: "Frontend Engineer",
     company: "Yandex",
+    logo: "/ya.png",
     ...C.slate,
     highlights: [
       "End-to-end feature ownership — from spec and API integration to rollout and support",
@@ -101,31 +102,52 @@ const timeline = [
       "On-call rotation — incident response, release monitoring, and production support",
     ],
   },
+  {
+    period: "Mar 2021 — Dec 2021",
+    role: "Junior Frontend Developer",
+    company: "High Technologies Center",
+    logo: "/htc.png",
+    ...C.green,
+    highlights: [
+      "Delivered production frontend features and supported product delivery within the engineering team",
+      "Improved existing interfaces and collaborated closely with senior engineers on frontend fundamentals",
+    ],
+  },
 ];
 
-const overviewMetrics = [
-  { label: "Years of Experience", value: "4+" },
-  { label: "Annual Cost Savings", value: "€5M" },
-  { label: "Claims Reduced",      value: "14.2%" },
-  { label: "Payouts Reduced",     value: "12%" },
+const personalProjects = [
+  {
+    id: "broqo",
+    icon: "/broqoLogo.png",
+    title: "Broqo",
+    subtitle: "AI Calorie & Macro Tracker",
+    status: "In development",
+    ...C.green,
+    bullets: [
+      "Building an AI-powered iOS product from concept to launch",
+    ],
+    link: "https://www.broqo.online",
+  },
+  {
+    id: "styleday",
+    icon: "/styledayLogo.png",
+    title: "Styleday",
+    subtitle: "AI-powered outfit analysis and style recommendation app",
+    status: "Live",
+    ...C.amber,
+    bullets: [
+      "Built and shipped an AI product independently from concept to production, with focus on UI quality and fast execution",
+      "Personal product built from scratch using React Native and TypeScript",
+      "Full product flow: photo upload → AI analysis → personalized style suggestions and styled images",
+      "Integrated LLM APIs (OpenAI, Gemini) and image-generation pipelines",
+      "Implemented authentication, subscription management, and in-app purchases",
+      "Designed AI-assisted user workflows and prompt systems",
+    ],
+    link: "https://styleday.app",
+  },
 ];
 
-const styleday = {
-  icon: "👗",
-  title: "Styleday",
-  subtitle: "AI-powered outfit analysis and style recommendation app",
-  ...C.amber,
-  bullets: [
-    "Personal product built from scratch using React Native and TypeScript",
-    "Full product flow: photo upload → AI analysis → personalized style suggestions and styled images",
-    "Integrated LLM APIs (OpenAI, Gemini) and image-generation pipelines",
-    "Implemented authentication, subscription management, and in-app purchases",
-    "Designed AI-assisted user workflows and prompt systems",
-  ],
-  link: "https://styleday.app",
-};
-
-const tabs = ["Overview", "Work Projects", "Personal", "Experience", "Skills"];
+const tabs = ["Overview", "Skills", "Experience", "Work Projects", "Personal"];
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("Overview");
@@ -138,10 +160,10 @@ export default function Portfolio() {
         <div style={{ ...card, padding: "1.5rem 2rem", marginBottom: "0.75rem", textAlign: "center", background: C.dark, border: "none" }}>
           <img src={avatar} alt="Maria Kutiavina" style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "1.5px solid #334155", margin: "0 auto 18px", display: "block" }} />
           <h1 style={{ margin: "0 0 6px", fontSize: 26, fontWeight: 600, letterSpacing: -0.5, color: "#F8FAFC" }}>Maria Kutiavina</h1>
-          <p style={{ margin: "0 0 20px", fontSize: 14, color: "#94A3B8" }}>Frontend Engineer · React · TypeScript · 4+ YOE</p>
+          <p style={{ margin: "0 0 20px", fontSize: 14, color: "#94A3B8" }}>Frontend Engineer · React · TypeScript · Next.js · 5 YOE</p>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="mailto:makutiavina@gmail.com" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>✉ makutiavina@gmail.com</a>
-            <a href="https://linkedin.com/in/maria-kutiavina/" target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>LinkedIn</a>
+            <a href="mailto:mariiakutiavina@gmail.com" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>✉ mariiakutiavina@gmail.com</a>
+            <a href="https://linkedin.com/in/maria-kutiavina-fe" target="_blank" rel="noreferrer" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>LinkedIn</a>
             <span style={{ fontSize: 12, color: "#94A3B8", background: "#1E293B", padding: "5px 14px", borderRadius: 20, border: "1px solid #334155" }}>Remote / Relocation / Hybrid</span>
           </div>
         </div>
@@ -172,18 +194,9 @@ export default function Portfolio() {
         {/* ── OVERVIEW ── */}
         {activeTab === "Overview" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <div style={{ ...card, display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
-              {overviewMetrics.map((m, i) => (
-                <div key={m.label} style={{ padding: "1rem 0.75rem", textAlign: "center", borderRight: i < overviewMetrics.length - 1 ? `1px solid ${C.border}` : "none" }}>
-                  <div style={{ fontSize: 26, fontWeight: 700, color: C.dark, letterSpacing: -0.5, marginBottom: 4 }}>{m.value}</div>
-                  <div style={{ fontSize: 11, color: C.faint, lineHeight: 1.4 }}>{m.label}</div>
-                </div>
-              ))}
-            </div>
-
             <div style={{ ...card, padding: "1rem" }}>
               <h2 style={{ margin: "0 0 10px", fontSize: 15, fontWeight: 600, color: C.dark }}>Career profile</h2>
-              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.75, color: C.muted }}>Frontend engineer with 4+ years building scalable B2B platforms using React and TypeScript. Specialized in complex operational workflows, data-heavy interfaces, async validation systems, and end-to-end feature ownership. Built frontend systems for logistics, returns, delivery settings, and moderation workflows used by tens of thousands of merchants.</p>
+              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.75, color: C.muted }}>Frontend Engineer with 5 years of experience building responsive web applications and complex product interfaces using React, TypeScript, and Next.js. Experienced in end-to-end feature delivery, cross-functional collaboration, and building maintainable, user-focused frontend solutions — from data-heavy operational workflows to AI-powered consumer apps.</p>
             </div>
 
             <div style={{ ...card, padding: "1rem" }}>
@@ -244,32 +257,38 @@ export default function Portfolio() {
         {activeTab === "Personal" && (
           <div>
             <p style={{ margin: "0 0 12px", fontSize: 13, color: C.faint, fontStyle: "italic" }}>Built independently, outside of work.</p>
-            <div style={{ ...card, overflow: "hidden" }}>
-              <div style={{ padding: "1.25rem 1.5rem", ...divider, display: "flex", alignItems: "center", gap: 14 }}>
-                <div style={{ width: 50, height: 50, borderRadius: 13, background: styleday.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>{styleday.icon}</div>
-                <div style={{ flex: 1 }}>
-                  <p style={{ margin: 0, fontWeight: 600, fontSize: 16, color: C.dark }}>{styleday.title}</p>
-                  <p style={{ margin: "3px 0 0", fontSize: 13, color: C.muted }}>{styleday.subtitle}</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {personalProjects.map(p => (
+                <div key={p.id} style={{ ...card, overflow: "hidden" }}>
+                  <div style={{ padding: "1.25rem 1.5rem", ...divider, display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{ width: 50, height: 50, borderRadius: 13, background: p.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden" }}>
+                      <img src={p.icon} alt={`${p.title} logo`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <p style={{ margin: 0, fontWeight: 600, fontSize: 16, color: C.dark }}>{p.title}</p>
+                      <p style={{ margin: "3px 0 0", fontSize: 13, color: C.muted }}>{p.subtitle}</p>
+                    </div>
+                    <a href={p.link} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: C.dark, background: C.bg, padding: "6px 14px", borderRadius: 20, textDecoration: "none", border: `1px solid ${C.border}`, flexShrink: 0, fontWeight: 500 }}>↗ Visit</a>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: `1px solid ${C.border}` }}>
+                    <div style={{ padding: "10px 16px", borderRight: `1px solid ${C.border}`, textAlign: "center" }}>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: p.text }}>iOS</div>
+                      <div style={{ fontSize: 11, color: C.faint, marginTop: 2 }}>Platform</div>
+                    </div>
+                    <div style={{ padding: "10px 16px", textAlign: "center" }}>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: p.text }}>{p.status}</div>
+                      <div style={{ fontSize: 11, color: C.faint, marginTop: 2 }}>Status</div>
+                    </div>
+                  </div>
+                  <div style={{ padding: "1.25rem 1.5rem", textAlign: "left" }}>
+                    <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
+                      {p.bullets.map((b, i) => (
+                        <li key={i} style={{ fontSize: 13, color: C.muted, lineHeight: 1.65 }}>{b}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <a href={styleday.link} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: C.dark, background: C.bg, padding: "6px 14px", borderRadius: 20, textDecoration: "none", border: `1px solid ${C.border}`, flexShrink: 0, fontWeight: 500 }}>↗ Visit</a>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderBottom: `1px solid ${C.border}` }}>
-                <div style={{ padding: "10px 16px", borderRight: `1px solid ${C.border}`, textAlign: "center" }}>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: styleday.text }}>iOS</div>
-                  <div style={{ fontSize: 11, color: C.faint, marginTop: 2 }}>Platform</div>
-                </div>
-                <div style={{ padding: "10px 16px", textAlign: "center" }}>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: styleday.text }}>0 → 1</div>
-                  <div style={{ fontSize: 11, color: C.faint, marginTop: 2 }}>Built from scratch</div>
-                </div>
-              </div>
-              <div style={{ padding: "1.25rem 1.5rem", textAlign: "left" }}>
-                <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
-                  {styleday.bullets.map((b, i) => (
-                    <li key={i} style={{ fontSize: 13, color: C.muted, lineHeight: 1.65 }}>{b}</li>
-                  ))}
-                </ul>
-              </div>
+              ))}
             </div>
           </div>
         )}
@@ -280,8 +299,8 @@ export default function Portfolio() {
             {timeline.map((job, i) => (
               <div key={i} style={{ ...card, overflow: "hidden" }}>
                 <div style={{ padding: "1rem 1.25rem", ...divider, display: "flex", alignItems: "center", gap: 14 }}>
-                  <div style={{ width: 44, height: 44, borderRadius: 11, background: job.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
-                    {i === 0 ? "💼" : "🧪"}
+                  <div style={{ width: 44, height: 44, borderRadius: 11, background: job.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden" }}>
+                    <img src={job.logo} alt={`${job.company} logo`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <p style={{ margin: 0, fontWeight: 600, fontSize: 15, color: C.dark }}>{job.role}</p>
